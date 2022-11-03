@@ -15,17 +15,17 @@ export default NextAuth({
       id: "credentials",
       name: "Credentials",
       credentials: {
-        userName: { label: "Nom d'utilisateur", type: "text" },
-        email: { label: "Adresse mail", type: "email" },
-        password: { label: "Mot de passe", type: "password" },
+        name: { label: "name", type: "text" },
+        email: { label: "email", type: "email" },
+        password: { label: "password", type: "password" },
       },
       authorize: async (credentials) => {
         if (credentials) {
           const user = await prisma.user.findFirst({
-            where: { name: credentials.userName! },
+            where: { name: credentials.name },
           });
 
-          if (user && user.password === credentials.password!) {
+          if (user && user.password === credentials.password) {
             return user;
           }
         }
