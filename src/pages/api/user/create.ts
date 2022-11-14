@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import client from "../../../../lib/prismadb";
-import { hash } from "argon2";
+import CryptoJS from "crypto-js";
 
 export default async function handler(
   req: NextApiRequest,
@@ -8,7 +8,7 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     const { name, email, password } = req.body;
-    const securedPassword = await hash(password);
+    const securedPassword = CryptoJS.AES.encrypt(password, "secret").toString();
     const user = await client.user.create({
       data: {
         name,

@@ -3,7 +3,6 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Image,
   Input,
 } from "@chakra-ui/react";
 import { Field } from "formik";
@@ -34,7 +33,7 @@ const CustomInput = ({
   touched,
 }: InputProps) => {
   return (
-    <Box mb={2}>
+    <Box mb={2} w="100%">
       <FormControl isDisabled={disabled} isInvalid={touched && !!error}>
         <FormLabel mb={5} htmlFor={id}>
           {label}

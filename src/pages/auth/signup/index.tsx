@@ -1,18 +1,8 @@
-import {
-  Box,
-  Button,
-  Container,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  VStack,
-} from "@chakra-ui/react";
-import { Formik, Form, useFormik } from "formik";
+import { Box, Button, Container, Heading, VStack } from "@chakra-ui/react";
+import { Formik } from "formik";
 import { useState } from "react";
-import CustomInput from "../../components/input";
+import CustomInput from "../../../components/input";
 import * as Yup from "yup";
-import { signIn } from "next-auth/react";
 
 const SignUp = () => {
   const [formValues, setFormValues] = useState<{
